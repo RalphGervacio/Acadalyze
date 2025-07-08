@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Account Reactivation | Acadalyze</title>
+
+        <link href="/img/acadalyze-logo.svg" rel="icon" />
+        <link rel="stylesheet" href="/fonts/open-sans.css" />
+        <link rel="stylesheet" href="/fonts/roboto.css" />
+        <link href="/all.min.css" rel="stylesheet" />
+        <link href="/icons/bootstrap-icons.css" rel="stylesheet" />
+        <link href="/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/lib/swal2/css/sweetalert2.min.css" rel="stylesheet">
+        <link href="/css/pages/auth/auth.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-11 col-sm-10 col-md-8 col-lg-7 col-xl-5">
+                    <div class="bg-dark rounded p-4 p-sm-5 text-center shadow">
+                        <img src="/img/acadalyze-logo.svg" alt="Acadalyze Logo"
+                             style="height: 200px; width: 250px; border-radius: 5px;" class="mt-1" />
+
+                        <h4 class="text-white mb-4 mt-2">Account Reactivation</h4>
+
+                        <div th:if="${success}" class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <span th:text="${message}">Your account has been successfully reactivated.</span>
+                        </div>
+
+                        <div th:if="${!success}" class="alert alert-danger" role="alert">
+                            <i class="bi bi-x-circle me-2"></i>
+                            <span th:text="${message}">Invalid or expired reactivation link.</span>
+                        </div>
+
+                        <!-- Resend Reactivation Form, shown only if not success -->
+                        <div th:if="${!success}" class="mt-4 text-start">
+                            <p class="text-white mb-1">Didn't receive the email?</p>
+                            <p class="text-white mb-3">Request a new reactivation link below.</p>
+
+                            <form id="resendForm" class="mb-3">
+                                <div class="mb-3 position-relative">
+                                    <label for="email" class="form-label text-white">Email address</label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email"/>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <button type="submit" class="btn btn-danger w-100">Resend Reactivation Email</button>
+                                <div id="resendStatus" class="mt-2"></div>
+                            </form>
+
+                            <div id="resendMessage" class="text-white"></div>
+                        </div>
+
+                        <div th:if="${success}">
+                            <a href="/auth/login" class="btn btn-danger w-100 mt-3">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Go to Sign In
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+        <script src="/lib/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="/lib/swal2/js/sweetalert2@11.js"></script>
+        
+        <!-- Base JS file -->
+        <script src="/js/base.js"></script>
+
+        <!-- External JS file -->
+        <script src="/js/admin/account_reactivation/account_reactivation.js"></script>
+        
+    </body>
+</html>

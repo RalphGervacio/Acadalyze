@@ -1,0 +1,62 @@
+<div th:fragment="scheduleEditModal">
+    <div class="modal fade" id="scheduleEditModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Schedule</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editScheduleForm">
+                        <input type="hidden" id="editScheduleId" name="scheduleId" />
+
+                        <div class="mb-3">
+                            <label for="editScheduleDay" class="form-label">Day</label>
+                            <select id="editScheduleDay" class="form-select" name="dayOfWeek">
+                                <option value="">Select Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editStartTime" class="form-label">Start Time</label>
+                            <input type="time" class="form-control" id="editStartTime" name="startTime">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editEndTime" class="form-label">End Time</label>
+                            <input type="time" class="form-control" id="editEndTime" name="endTime">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editRoom" class="form-label">Room</label>
+                            <input type="text" class="form-control" id="editRoom" name="room" placeholder="e.g. Lab 101 or Rm 3B">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editSection" class="form-label">Section</label>
+                            <input type="text" class="form-control" id="editSection" name="section" placeholder="e.g. A or 1B">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save me-1"></i>Update Schedule
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

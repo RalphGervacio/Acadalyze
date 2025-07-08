@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Sign Up | Acadalyze</title>
+
+        <link href="/img/acadalyze-logo.svg" rel="icon">
+
+        <!-- Icons and Bootstrap -->
+        <link href="/all.min.css" rel="stylesheet">
+        <link href="/icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- SweetAlert2 -->
+        <link href="/lib/swal2/css/sweetalert2.min.css" rel="stylesheet" />
+
+        <!-- Main Stylesheet -->
+        <link href="/css/pages/auth/auth.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-11 col-sm-10 col-md-8 col-lg-7 col-xl-5">
+                    <div class="bg-dark rounded p-4 p-sm-5 text-center shadow">
+                        <img src="/img/acadalyze-logo.svg" alt="Acadalyze Logo" style="height: 200px; width: 250px; border-radius: 5px;" class="mt-1">
+                        <h4 class="text-white mb-4 mt-2">Sign Up</h4>
+
+                        <form id="signupForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
+                                <label for="firstName">First Name</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Middle Name">
+                                <label for="middleName">Middle Name</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
+                                <label for="lastName">Last Name</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="userName" id="userName" placeholder="Username">
+                                <label for="userName">Username</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3 position-relative password-wrapper">
+                                <input type="password" class="form-control pe-5" name="password" id="signuppassword" placeholder="Password">
+                                <label for="signuppassword">Password</label>
+
+                                <span id="toggleSignUpPassword" class="password-toggle-icon">
+                                    <i class="bi bi-eye-slash"></i>
+                                </span>
+                                <div class="form-text text-start" id="passwordStrength" style="font-weight: bold;"></div>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="roleSelect" name="role">
+                                    <option value="" disabled selected>Select a role</option>
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="INSTRUCTOR">Instructor</option>
+                                    <option value="STUDENT">Student</option>
+                                </select>
+                                <label for="roleSelect">Select Role</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <div class="form-floating mb-3 d-none" id="studentIdWrapper">
+                                <input type="text" class="form-control" name="studentId" id="studentId" placeholder="Student ID">
+                                <label for="studentId">Student ID</label>
+                                <div class="invalid-feedback d-block text-start"></div>
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="form-check mb-3 text-start">
+                                <input class="form-check-input" type="checkbox" id="agreeCheck">
+                                <label class="form-check-label text-white" for="agreeCheck">
+                                    I agree to the terms and conditions
+                                </label>
+                                <div class="invalid-feedback text-start"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-danger py-3 w-100 mb-3" id="signUpBtn">Sign Up</button>
+
+                            <p class="text-center mb-0 text-white-50">
+                                Already have an account? <a class="text-danger" href="/auth/login">Sign In</a>
+                            </p>
+
+                            <button type="button" class="btn d-flex justify-content-center mx-auto mt-2"
+                                    data-bs-toggle="modal" data-bs-target="#terms_&_agreements">
+                                <small class="text-danger">View Terms and Agreement</small>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div th:insert="pages/auth/modal/terms_&_agreements :: terms_&_agreements"></div>
+
+        <!-- Scripts -->
+        <script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+        <script src="/lib/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="/lib/swal2/js/sweetalert2@11.js"></script>
+        <script src="/js/password-toggle.js"></script>
+        <script src="/js/auth/auth.js"></script>
+    </body>
+</html>

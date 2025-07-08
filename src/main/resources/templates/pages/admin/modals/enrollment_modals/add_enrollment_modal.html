@@ -1,0 +1,37 @@
+<div th:fragment="enrollmentAddModal">
+    <div class="modal fade" id="enrollmentAddModal" tabindex="-1" aria-labelledby="enrollmentAddModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enrollmentAddModalLabel">Enroll Student</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addEnrollmentForm">
+                        <div class="mb-3">
+                            <label for="selectStudent" class="form-label">Select Student</label>
+                            <select id="selectStudent" name="auth_user_id" class="form-select select2-theme">
+                                <!-- Dynamically populated via JS -->
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectCourseInModal" class="form-label">Select Course</label>
+                            <select id="selectCourseInModal" name="course_id" class="form-select select2-theme">
+                                <!-- Dynamically populated via JS -->
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-plus-circle me-1"></i>Enroll
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

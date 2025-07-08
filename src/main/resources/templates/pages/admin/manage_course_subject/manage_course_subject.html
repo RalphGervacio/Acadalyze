@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Manage Curriculum | Acadalyze</title>
+
+        <!-- CSS -->
+        <link href="/css/pages/admin/manage_course_subject/manage_course_subject.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+
+            <div class="card shadow-sm rounded-3">
+                <div class="card-header custom-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Manage Curriculum</h5>
+                        <button id="refreshCourseSubjectsBtn" class="btn btn-sm" onclick="reloadCourseSubjectTable()">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                    </div>
+
+                    <!-- Breadcrumb under h5 -->
+                    <div class="mt-2" th:replace="~{fragments/breadcrumbs :: manageCurriculum}"></div>
+                </div>
+
+                <div class="mx-3 my-2 d-flex gap-2 align-items-center">
+                    <select id="filterCourse" name="courseId" class="form-select select2-theme form-select-sm w-auto" onchange="handleFilterCourseChange(event)">
+                        <option value="">Filter by Course</option>
+                        <!-- Data loaded via JS -->
+                    </select>
+
+                    <button id="clearCourseFilterBtn" class="btn btn-sm d-none" onclick="handleClearCourseFilter()">
+                        <i class="bi bi-x-circle"></i> Clear
+                    </button>
+
+                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#courseSubjectAddModal">
+                        <i class="bi bi-plus-circle"></i> Assign Subject
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="dt_course_subjects" class="table table-bordered table-hover table-striped align-middle nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Semester</th>
+                                    <th>Year Level</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <!-- Data loaded via JS -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modals -->
+            <div th:insert="~{pages/admin/modals/course_subject_modals/add_course_subject_modal :: courseSubjectAddModal}"></div>
+            <div th:insert="~{pages/admin/modals/course_subject_modals/edit_course_subject_modal :: courseSubjectEditModal}"></div>
+
+        </div>
+
+        <!-- Scripts -->
+        <div layout:fragment="page-scripts">
+            <script src="/js/admin/manage_course_subject/manage_course_subject.js"></script>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Notifications | Acadalyze</title>
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+            <div class="card shadow-sm rounded-3">
+                <div class="card-header custom-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">All Notifications</h5>
+                    <div>
+                        <button id="markAllAsRead" onclick="markAllAsRead()" class="btn btn-sm me-2 text-white" style="background-color: #4da3ff; border-color: #4da3ff;">
+                            <i class="bi bi-check2-square me-1"></i> Mark All as Read
+                        </button>
+                        <button id="refreshNotification" class="btn btn-sm" onclick="refreshNotifications()">
+                            <i class="bi bi-arrow-clockwise me-1"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div id="allNotifications" class="list-group" style="max-height: 75vh; overflow-y: auto;">
+                        <p class="text-center mb-0">Loading notifications...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

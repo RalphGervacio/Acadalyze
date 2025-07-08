@@ -1,0 +1,62 @@
+<div th:fragment="courseSubjectEditModal">
+    <div class="modal fade" id="courseSubjectEditModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Assigned Subject</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editCourseSubjectForm">
+                        <!-- Hidden input for ID -->
+                        <input type="hidden" name="id" id="editCourseSubjectId" />
+
+                        <div class="mb-3">
+                            <label for="editCourse" class="form-label">Course</label>
+                            <select id="editCourse" name="courseId" class="form-select">
+                                <!-- Filled via JS -->
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editSubject" class="form-label">Subject</label>
+                            <select id="editSubject" name="subjectId" class="form-select">
+                                <!-- Filled via JS -->
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editSemester" class="form-label">Semester</label>
+                                <select id="editSemester" name="semester" class="form-select">
+                                    <option value="">-- Select Semester --</option>
+                                    <option value="1">1st Semester</option>
+                                    <option value="2">2nd Semester</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="editYearLevel" class="form-label">Year Level</label>
+                                <select id="editYearLevel" name="yearLevel" class="form-select">
+                                    <option value="">-- Select Year Level --</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save me-1"></i>Update Assignment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

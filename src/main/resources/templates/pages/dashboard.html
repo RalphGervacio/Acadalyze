@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Dashboard | Acadalyze</title>
+        <link href="/css/dashboard.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="card shadow-sm rounded-3">
+                        <div class="card-header custom-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 fw-bold">
+                                    <i class="fa fa-calendar-alt me-2"></i>
+                                    Recently Published Schedule
+                                </h5>
+
+                                <div class="d-flex align-items-center gap-2"
+                                     th:if="${session.user != null and (session.user.role.authRoleId == 1 or session.user.role.authRoleId == 2)}">
+                                    <button id="triggerUnpublishBtn" class="btn btn-sm btn-danger fw-semibold"
+                                            onclick="triggerUnpublishButton()">
+                                        <i class="fa fa-trash"></i> Remove Schedules
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="mb-2 d-flex flex-wrap gap-2">
+                                <button id="removeSelectedSchedulesBtn"
+                                        class="btn btn-sm btn-danger fw-semibold"
+                                        style="display: none;"
+                                        onclick="removeSelectedSchedules()"
+                                        th:if="${session.user != null and (session.user.role.authRoleId == 1 or session.user.role.authRoleId == 2)}">
+                                    <i class="bi bi-trash"></i> Unpublish Selected
+                                </button>
+
+                                <button id="toggleViewBtn" class="btn btn-sm btn-toggle-theme fw-semibold" onclick="toggleView()">
+                                    <i class="fa fa-calendar-alt me-1"></i> Calendar View
+                                </button>
+                            </div>
+
+                            <div id="publishedScheduleContainer" class="table-responsive">
+                                <table class="table table-hover align-middle text-white mb-0" id="dashboardScheduleTable" style="width: 100%;">
+                                    <thead class="table-sticky-header">
+                                        <tr>
+                                            <th class="text-center" style="width: 1%;"></th>
+                                            <th class="text-start" style="width: 13%;">Subject</th>
+                                            <th class="text-start" style="width: 12%;">Schedule</th>
+                                            <th class="text-start" style="width: 10%;">Room</th>
+                                            <th class="text-start" style="width: 10%;">Section</th>
+                                            <th class="text-start" style="width: 20%;">Instructor</th>
+                                            <th class="text-start" style="width: 15%;">Published</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="scheduleTableBody">
+                                        <!-- Dynamically populated via DataTables -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="calendarContainer" style="display: none;">
+                                <div id="publishedCalendar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- Scripts -->
+    <div layout:fragment="page-scripts">
+        <script th:src="@{/js/dashboard.js}"></script>
+    </div>
+
+</html>

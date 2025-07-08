@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <style>
+            html {
+                visibility: hidden;
+            }
+        </style>
+        <script>
+            (function () {
+                const theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-bs-theme', theme);
+            })();
+        </script>
+
+        <!-- Icon -->
+        <link href="/img/acadalyze-logo.svg" rel="icon">
+
+        <!-- Icon Fonts -->
+        <link href="/all.min.css" rel="stylesheet">
+        <link href="/icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+        <!-- Core Libraries -->
+        <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+        <link href="/lib/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="/lib/datatables/responsive.bootstrap5.min.css" rel="stylesheet">
+        <link href="/lib/swal2/css/sweetalert2.min.css" rel="stylesheet">
+        <link href="/lib/select2/css/select2.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Core -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Search Styles -->
+        <link href="/css/pages/search/search.css" rel="stylesheet">
+
+        <!-- Breadcrumb Styles -->
+        <link href="/css/breadcrumbs.css" rel="stylesheet">
+
+        <!-- Main Stylesheet -->
+        <link href="/css/messages.css" rel="stylesheet">
+        <link href="/css/notification.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+
+        <!-- ✅ Reveal once styled -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.documentElement.style.visibility = "visible";
+            });
+        </script>
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        <input type="hidden" id="sessionUserId" th:value="${session.user.authUserId}" />
+        <audio id="messageSound" src="/sounds/received-messages.mp3" preload="auto" style="display:none;"></audio>
+        <!-- Sidebar -->
+        <div th:insert="~{layouts/sidebar_layout :: sidebar}"></div>
+
+        <!-- Navbar, Main Content, Footer -->
+        <div th:insert="~{layouts/navbar_layout :: NavMainFooter}"></div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-dark btn-lg-square back-to-top">
+            <i class="bi bi-arrow-up"></i>
+        </a>
+
+        <!-- Modal -->
+        <div th:insert="~{pages/search/modal/search_modal :: mobileSearchModal}"></div>
+
+        <!-- JavaScript Libraries -->
+        <!-- Core Libraries: Always load jQuery first -->
+        <script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+
+        <!-- Easing Plugin: MUST come right after jQuery -->
+        <script src="/lib/jquery/jquery.easing.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="/lib/bootstrap/bootstrap.bundle.min.js"></script>
+
+        <!-- Chart.js -->
+        <script src="/lib/chart/chart.min.js"></script>
+
+        <!-- Optional UX Libraries -->
+        <script src="/lib/waypoints/waypoints.min.js"></script>
+        <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Tempus Dominus (requires moment.js first) -->
+        <script src="/lib/tempusdominus/js/moment.min.js"></script>
+        <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+        <!-- DataTables -->
+        <script src="/lib/datatables/jquery.dataTables.min.js"></script>
+        <script src="/lib/datatables/dataTables.bootstrap5.min.js"></script>
+        <script src="/lib/datatables/dataTables.responsive.min.js"></script>
+        <script src="/lib/datatables/responsive.bootstrap5.min.js"></script>
+
+        <!--CALENDAR-->
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+        <!-- SweetAlert2 -->
+        <script src="/lib/swal2/js/sweetalert2@11.js"></script>
+
+        <!-- Select2 -->
+        <script src="/lib/select2/js/select2.min.js"></script>
+
+        <!-- 🔔 Global Notification Script -->
+        <script src="/js/notification.js"></script>
+        <script type="module" src="/js/messages/handleMessageNotification.js"></script>
+        <script type="module" src="/js/messages/handleSoundNotification.js"></script>
+
+        <!-- 🔔 Global Messages Script -->
+        <script type="module" src="/js/messages/messages.js"></script>
+
+        <!-- ✅ Base utilities and validators (must come before main.js) -->
+        <script src="/js/base.js"></script>
+
+        <script src="/js/AjaxUtilityFunctions.js"></script>
+
+        <!-- ⬇ Page-Specific Scripts -->
+        <div layout:fragment="page-scripts"></div>
+
+        <!-- ✅ General scripts (main.js should be VERY LAST to ensure DOM & plugins are ready) -->
+        <script src="/js/search/search.js"></script>
+        <script src="/js/main.js"></script>
+
+    </body>
+</html>

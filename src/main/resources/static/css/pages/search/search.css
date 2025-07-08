@@ -1,0 +1,140 @@
+/* 
+    Created on : Jun 26, 2025, 3:54:31 AM
+    Author     : Ralph Gervacio
+*/
+
+/* Search Form */
+#searchForm {
+    width: 100%;
+}
+
+/* Search Input */
+#searchInput {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border-color: var(--navlink-hover-bg);
+}
+
+#searchInput::placeholder {
+    color: var(--navlink-color);
+    opacity: 0.8;
+}
+
+/* Optional Inverse Placeholder */
+html[data-bs-theme='light'] .form-control.inverse-theme::placeholder {
+    color: #dee2e6;
+    opacity: 1;
+}
+html[data-bs-theme='dark'] .form-control.inverse-theme::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+/* Search Results Dropdown (Desktop) */
+#searchResultsDropdown {
+    max-height: 50vh;
+    z-index: 1050;
+    width: 100%;
+    border: 1px solid var(--navlink-hover-bg);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+#searchResultsDropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: var(--navlink-color);
+    text-decoration: none;
+}
+
+#searchResultsDropdown a:hover,
+#searchResultsDropdown a:focus {
+    background-color: var(--navlink-hover-bg);
+    color: var(--navlink-color);
+}
+
+/* Section titles in dropdown */
+.search-section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 0.5rem 0 0.3rem;
+}
+
+#searchResultsDropdown hr {
+    border-top: 1px solid var(--navlink-hover-bg);
+    margin: 0.5rem 0;
+}
+
+/* Toggle Button (Mobile Icon) */
+#searchToggleBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--icon-bg);
+    color: var(--nav-icon-color);
+    border: none;
+    border-radius: 50%;
+}
+#searchToggleBtn i {
+    font-size: 1.2rem;
+}
+
+/* Mobile Behavior */
+@media (min-width: 768px) {
+    #searchForm {
+        display: flex !important;
+    }
+    #searchToggleBtn {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    #searchResultsDropdown {
+        width: 40vw !important;
+        max-width: none;
+    }
+}
+
+/* Prevent Blue Highlight */
+#searchResultsDropdown *::selection,
+#mobileSearchResultsDropdown *::selection {
+    background: var(--icon-bg);
+    color: var(--navlink-color);
+}
+
+/* Mobile Search Modal */
+#mobileSearchModal .modal-content {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border-radius: 0;
+}
+#mobileSearchModal .modal-header {
+    border-bottom: 1px solid var(--navlink-hover-bg);
+}
+
+/* Mobile Search Dropdown */
+#mobileSearchResultsDropdown {
+    border: 1px solid var(--navlink-hover-bg);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+#mobileSearchResultsDropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: var(--navlink-color);
+    text-decoration: none;
+}
+#mobileSearchResultsDropdown a:hover {
+    background-color: var(--navlink-hover-bg);
+    color: var(--navlink-color);
+}

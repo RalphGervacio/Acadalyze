@@ -1,0 +1,39 @@
+<div th:fragment="subjectAddModal">
+    <div class="modal fade" id="subjectAddModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Subject</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSubjectForm">
+                        <div class="mb-3">
+                            <label for="addSubjectCode" class="form-label">Subject Code</label>
+                            <input type="text" class="form-control" id="addSubjectCode" name="subjectCode" placeholder="Subject Code">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addSubjectName" class="form-label">Subject Name & Semester/Year</label>
+                            <input type="text" class="form-control" id="addSubjectName" name="subjectName" placeholder="e.g Java Fundamentals (1st Semester, 2nd Year)">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addSubjectDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="addSubjectDescription" name="description" rows="3" placeholder="Description"></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-plus-circle me-1"></i>Add Subject
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

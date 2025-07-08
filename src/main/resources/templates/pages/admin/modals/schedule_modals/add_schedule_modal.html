@@ -1,0 +1,86 @@
+<div th:fragment="scheduleAddModal">
+    <div class="modal fade" id="scheduleAddModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Schedule</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addScheduleForm">
+
+                        <div class="mb-3">
+                            <label for="addScheduleCourse" class="form-label">Course</label>
+                            <select id="addScheduleCourse" class="form-select" name="courseId">
+                                <option value="">Select Course</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addScheduleSubject" class="form-label">Subject</label>
+                            <select id="addScheduleSubject" class="form-select" name="subjectId">
+                                <option value="">Select Subject</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addScheduleInstructor" class="form-label">Instructor</label>
+                            <select id="addScheduleInstructor" class="form-select" name="instructorId">
+                                <option value="">Select Instructor</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addScheduleDay" class="form-label">Day</label>
+                            <select id="addScheduleDay" class="form-select" name="dayOfWeek">
+                                <option value="">Select Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addStartTime" class="form-label">Start Time</label>
+                            <input type="time" class="form-control" id="addStartTime" name="startTime">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addEndTime" class="form-label">End Time</label>
+                            <input type="time" class="form-control" id="addEndTime" name="endTime">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addRoom" class="form-label">Room</label>
+                            <input type="text" class="form-control" id="addRoom" name="room" placeholder="e.g. Lab 101 or Rm 3B">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addSection" class="form-label">Section</label>
+                            <input type="text" class="form-control" id="addSection" name="section" placeholder="e.g. A or 1B">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-plus-circle me-1"></i>Add Schedule
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

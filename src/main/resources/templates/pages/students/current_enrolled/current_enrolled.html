@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Current Enrolled | Acadalyze</title>
+        <link href="/css/pages/students/current_enrolled/current_enrolled.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+
+            <div class="card shadow-sm rounded-3">
+                <div class="card-header custom-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Current Enrolled</h5>
+                    <button id="refreshCurrentEnrolledBtn" class="btn btn-sm" 
+                            onclick="reloadCurrentEnrolledTable()">
+                        <i class="bi bi-arrow-clockwise"></i> Refresh
+                    </button>
+                </div>
+
+                <div class="mx-3 my-2 d-flex justify-content-between align-items-center">
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="dt_current_enrolled" class="table table-bordered table-hover table-striped align-middle nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Enrolled At</th>
+                                </tr>
+                            </thead>
+                            <!-- Data loaded via JS -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div layout:fragment="page-scripts">
+            <script src="/js/students/current_enrolled/current_enrolled.js"></script>
+        </div>
+    </body>
+</html>

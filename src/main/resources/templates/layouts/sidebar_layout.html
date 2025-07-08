@@ -1,0 +1,128 @@
+<div th:fragment="sidebar">
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+        <nav class="navbar">
+            <a th:href="@{/Dashboard}" class="navbar-brand d-flex justify-content-center align-items-center my-0 py-0 mb-3 mx-3">
+                <span class="text-center acadalyze-logo-sidebar">
+                    Acadalyze
+                </span>
+            </a>
+
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <!-- When user is logged in -->
+                    <div th:if="${session.user != null}" class="d-inline-block position-relative">
+
+                        <!-- Profile image -->
+                        <img id="profilePreviewSmall"
+                             th:src="@{'/profile/profile-image/' + ${session.user.authUserId}}"
+                             alt="Profile Image"
+                             class="rounded-circle"
+                             style="width: 40px; height: 40px; object-fit: cover; display: block;"
+                             onerror="this.style.display='none'; document.getElementById('profileIconFallbackSmall').style.display='inline-block';" />
+
+                        <!-- Fallback icon -->
+                        <i id="profileIconFallbackSmall"
+                           class="bi bi-person-circle fs-4 text-secondary"
+                           style="display: none; width: 40px; height: 40px;"></i>
+
+                        <!-- Online indicator -->
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+
+                    <!-- When no user in session -->
+                    <div th:if="${session.user == null}" class="d-inline-block position-relative">
+                        <i class="bi bi-person-circle fs-4 text-secondary" style="width: 40px; height: 40px;"></i>
+                    </div>
+                </div>
+
+                <div class="ms-3">
+                    <h6 class="mb-0" th:text="${session.user != null ? session.user.firstName + ' ' + session.user.lastName : 'Guest'}"></h6>
+                    <span th:text="${session.user != null ? session.user.role.roleName.toUpperCase() : 'UNKNOWN'}"></span>
+                </div>
+            </div>
+
+            <!--START OF SIDEBAR LINKS-->
+            <div class="navbar-nav w-100">
+
+                <!--MAIN DASHBOARD-->
+                <a th:href="@{/Dashboard}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+
+                <!-- SUPER ADMIN AND ADMIN ROLES ONLY CAN ACCESS THIS -->
+                <div class="nav-item dropdown" th:if="${session.user != null and (session.user.role.authRoleId == 1 or session.user.role.authRoleId == 2)}">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-kanban me-2"></i>Management
+                    </a>
+                    <div class="dropdown-menu border-0">
+                        <a th:href="@{/admin/users}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-people-fill me-2"></i>Manage Users
+                        </a>
+                        <a th:href="@{/admin/instructors}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-person-circle me-2"></i>Manage Instructors
+                        </a>
+                        <a th:href="@{/admin/subjects}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-journal-bookmark-fill me-2"></i>Manage Subjects
+                        </a>
+                        <a th:href="@{/admin/courses}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-journal-text me-2"></i>Manage Courses
+                        </a>
+                        <a th:href="@{/admin/enrollments}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-person-lines-fill me-2"></i>Manage Enrollments
+                        </a>
+                        <a th:href="@{/admin/schedules}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-clock-history me-2"></i>Manage Schedules
+                        </a>
+                        <a th:href="@{/admin/course-subjects}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-clock-history me-2"></i>Manage Curriculum
+                        </a>
+                    </div>
+                </div>
+                <!-- END OF SUPER ADMIN AND ADMIN ROLES ONLY CAN ACCESS THIS -->
+
+                <!-- STUDENT ONLY: ENROLLMENT DROPDOWN -->
+                <div class="nav-item dropdown" th:if="${session.user != null and (session.user.role.authRoleId == 3)}">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-journal-check me-2"></i>Enrollment
+                    </a>
+                    <div class="dropdown-menu border-0">
+                        <a th:href="@{/student/current-enrolled}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-list-check me-2"></i>Current Enrolled
+                        </a>
+                        <a th:href="@{/student/enrollments/history}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-clock-history me-2"></i>Enrollment History
+                        </a>
+                        <a th:href="@{/student/enrollments/drop-request}" class="dropdown-item nav-link sidebar-subitem">
+                            <i class="bi bi-person-x me-2"></i>Drop Request
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="button.html" class="dropdown-item">Buttons</a>
+                        <a href="typography.html" class="dropdown-item">Typography</a>
+                        <a href="element.html" class="dropdown-item">Other Elements</a>
+                    </div>
+                </div>
+                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+                <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+                <a th:href="@{/Grades}" class="nav-item nav-link">
+                    <i class="fa fa-chart-bar me-2"></i>Grades
+                </a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a th:href="@{/auth/login}" class="dropdown-item">Sign In</a>
+                        <a href="signup.html" class="dropdown-item">Sign Up</a>
+                        <a href="404.html" class="dropdown-item">404 Error</a>
+                        <a href="blank.html" class="dropdown-item">Blank Page</a>
+                    </div>
+                </div>
+            </div>
+            <!--END OF SIDEBAR LINKS-->
+        </nav>
+    </div>
+    <!-- Sidebar End -->
+</div>

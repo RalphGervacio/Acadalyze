@@ -1,0 +1,31 @@
+/* 
+    Created on : Jun 25, 2025, 1:54:47 AM
+    Author     : Ralph Gervacio
+*/
+
+body {
+    background: url('/img/acadalyze-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #1e1e1e;
+}
+
+@media (max-width: 576px) {
+    .bg-secondary {
+        padding: 2rem 1rem !important;
+    }
+
+    h3, h4 {
+        font-size: 1.5rem;
+    }
+
+    .form-check-label,
+    .form-control,
+    .btn {
+        font-size: 0.95rem;
+    }
+
+    #resendVerificationWrapper button {
+        font-size: 0.9rem;
+    }
+}
+

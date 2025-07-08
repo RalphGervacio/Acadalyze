@@ -1,0 +1,64 @@
+<div th:fragment="courseSubjectAddModal">
+    <div class="modal fade" id="courseSubjectAddModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Assign Subject to Course</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="assignCourseSubjectForm">
+                        <small class="text-danger fw-bold">NOTE: Be careful on selecting COURSE & SUBJECT</small>
+                        <div class="mb-3">
+                            <label for="selectCourse" class="form-label">Select Course</label>
+                            <select id="selectCourse" name="courseId" class="form-select">
+                                <option value="">-- Select Course --</option>
+                                <!-- Options populated via JS -->
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="selectSubject" class="form-label">Select Subject</label>
+                            <select id="selectSubject" name="subjectId" class="form-select">
+                                <option value="">-- Select Subject --</option>
+                                <!-- Options populated via JS -->
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="semester" class="form-label">Semester</label>
+                                <select id="semester" name="semester" class="form-select">
+                                    <option value="">-- Select Semester --</option>
+                                    <option value="1">1st Semester</option>
+                                    <option value="2">2nd Semester</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="yearLevel" class="form-label">Year Level</label>
+                                <select id="yearLevel" name="yearLevel" class="form-select">
+                                    <option value="">-- Select Year Level --</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-bookmark-plus me-1"></i>Assign Subject
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Manage Enrollments | Acadalyze</title>
+        <link href="/css/pages/admin/manage_enrollments/manage_enrollments.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+
+            <div class="card shadow-sm rounded-3">
+                <div class="card-header custom-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Manage Enrollments</h5>
+                        <button id="refreshEnrollmentsBtn" class="btn btn-sm" 
+                                onclick="reloadEnrollmentTable()">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                    </div>
+
+                    <!-- Breadcrumb under h5 -->
+                    <div class="mt-2" th:replace="~{fragments/breadcrumbs :: manageEnrollments}"></div>
+                </div>
+
+                <div class="mx-3 my-2">
+                    <button class="btn btn-sm btn-success mb-3" data-bs-toggle="modal" data-bs-target="#enrollmentAddModal">
+                        <i class="bi bi-plus-circle"></i> Enroll Student
+                    </button>
+
+                    <div class="row g-2 align-items-end">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <label for="filterStudent" class="form-label">Filter by Student:</label>
+                            <select id="filterStudent" name="studentId" class="form-select select2-theme form-select-sm" onchange="handleChange(event)">
+                                <option value="">-- All Students --</option>
+                                <!-- Data loaded via JS -->
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <label class="form-label d-none d-md-block">&nbsp;</label>
+                            <button id="clearFilterBtn" class="btn btn-sm w-100" onclick="handleClear()">
+                                <i class="bi bi-x-circle"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="dt_enrollments" class="table table-bordered table-hover table-striped align-middle nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <input type="checkbox" id="selectAllEnrollments" />
+                                    </th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Enrolled At</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <!-- Data loaded via JS -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Include modal fragment -->
+            <div th:insert="~{pages/admin/modals/enrollment_modals/add_enrollment_modal :: enrollmentAddModal}"></div>
+
+        </div>
+
+        <div layout:fragment="page-scripts">
+            <script src="/js/admin/manage_enrollments/manage_enrollments.js"></script>
+        </div>
+    </body>
+</html>

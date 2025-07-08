@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Manage Courses | Acadalyze</title>
+
+        <!-- CSS -->
+        <link href="/css/pages/admin/manage_courses/manage_courses.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+
+            <div class="card shadow-sm rounded-3">
+                <div class="card-header custom-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Manage Courses</h5>
+                        <button id="refreshCoursesBtn" class="btn btn-sm"
+                                onclick="reloadCourseTable()">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                    </div>
+
+                    <!-- Breadcrumb under h5 -->
+                    <div class="mt-2" th:replace="~{fragments/breadcrumbs :: manageCourses}"></div>
+                </div>
+
+                <div class="mx-3 my-2">
+                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#courseAddModal">
+                        <i class="bi bi-plus-circle"></i> Add Course
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="dt_courses" class="table table-bordered table-hover table-striped align-middle nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th class="d-none">Course ID</th>
+                                    <th>Course Code</th>
+                                    <th>Course Title</th>
+                                    <th>Description</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <!-- DYNAMICALLY DISPLAY THE RESULTS VIA JS -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Include modal fragments -->
+            <div th:insert="~{pages/admin/modals/course_modals/add_course_modal  :: courseAddModal}"></div>
+            <div th:insert="~{pages/admin/modals/course_modals/edit_course_modal :: courseEditModal}"></div>
+
+        </div>
+
+        <!-- Scripts -->
+        <div layout:fragment="page-scripts">
+            <script src="/js/admin/manage_courses/manage_courses.js"></script>
+        </div>
+
+    </body>
+</html>

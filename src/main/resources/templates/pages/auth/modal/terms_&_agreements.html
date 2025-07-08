@@ -1,0 +1,36 @@
+<div th:fragment="terms_&_agreements">
+    <div class="modal fade" id="terms_&_agreements" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background-color: #cdcdcd; color: #212529;">
+                <div class="modal-header border-0 bg-dark pb-2">
+                    <img src="/img/acadalyze-logo.svg" alt="Acadalyze Logo" style="height: 50px; border-radius: 5px;" class="me-2">
+                    <h5 class="modal-title text-white" id="termsModalLabel">Terms & Agreement</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <hr class="mt-0 pt-0">
+
+                <div class="modal-body px-4 pt-3 pb-2" style="max-height: none; overflow: visible;">
+                    <div class="small">
+                        <p>
+                            <strong>Welcome to Acadalyze!</strong> <br> By signing up and using our services, you agree to the following terms and conditions.
+                        </p>
+                        <p><strong class="text-dark">1. User Conduct</strong><br>You agree to provide accurate information during registration and to use the system respectfully and legally.</p>
+                        <p><strong class="text-dark">2. Privacy Policy</strong><br>We respect your privacy. Your personal data will be stored securely and used only within the context of Acadalyze's academic analysis system.</p>
+                        <p><strong class="text-dark">3. Academic Honesty</strong><br>Users must not input false academic records or impersonate another individual. Violations may result in suspension or account termination.</p>
+                        <p><strong class="text-dark">4. System Availability</strong><br>While we strive for uptime, we are not liable for temporary outages or data loss due to system maintenance or failure.</p>
+                        <p><strong class="text-dark">5. Updates</strong><br>Terms may be updated from time to time. Continued use of the service implies acceptance of the latest version.</p>
+                        <p class="fw-bold text-dark">"Please read carefully before proceeding with your registration."</p>
+                    </div>
+                </div>
+
+                <hr class="mb-0 pb-0">
+
+                <div class="modal-footer border-0 bg-dark justify-content-center pb-2">
+                    <button type="button" class="btn btn-success mx-1" data-bs-dismiss="modal" id="agreeCheck">I Agree</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

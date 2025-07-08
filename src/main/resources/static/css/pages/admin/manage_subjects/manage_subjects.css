@@ -1,0 +1,31 @@
+/* 
+    Created on : Jun 28, 2025, 12:07:30 AM
+    Author     : Ralph Gervacio
+*/
+
+/* Action Buttons */
+.btn-edit {
+    background-color: #535353;
+    color: white;
+    border: none;
+}
+.btn-edit:hover {
+    opacity: 0.85;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+.btn-delete:hover {
+    opacity: 0.85;
+}
+
+/* Button inside header */
+#refreshSubjectsBtn {
+    background-color: var(--light) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}
+

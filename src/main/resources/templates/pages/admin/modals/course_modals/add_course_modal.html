@@ -1,0 +1,39 @@
+<div th:fragment="courseAddModal">
+    <div class="modal fade" id="courseAddModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Course</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addCourseForm">
+                        <div class="mb-3">
+                            <label for="addCourseCode" class="form-label">Course Code</label>
+                            <input type="text" class="form-control" id="addCourseCode" name="courseCode" placeholder="Course Code">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addCourseTitle" class="form-label">Course Title</label>
+                            <input type="text" class="form-control" id="addCourseTitle" name="courseTitle" placeholder="Course Title">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="addCourseDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="addCourseDescription" name="courseDescription" rows="3" placeholder="Description"></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-plus-circle me-1"></i>Add Course
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

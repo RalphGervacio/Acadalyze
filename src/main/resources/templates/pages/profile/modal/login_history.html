@@ -1,0 +1,59 @@
+<div th:fragment="loginHistoryModal">
+    <div class="modal fade" id="loginHistoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-superwide modal-xl modal-dialog-scrollable">
+            <div class="modal-content rounded-4 shadow-lg border-0" style="background-color: var(--bs-body-bg); color: var(--bs-body-color);">
+
+                <!-- Modal Header -->
+                <div class="modal-header border-0 pb-1">
+                    <h5 class="modal-title">
+                        <i class="bi bi-clock-history me-2" style="color: var(--nav-icon-color);"></i>
+                        Recent Login History
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body px-4 pt-2 pb-0" id="loginHistoryContent">
+                    <div id="loginHistoryTableContainer">
+
+                        <!-- No History Message -->
+                        <div class="text-center py-5 d-none" id="noLoginHistory" style="color: var(--bs-body-color);">
+                            <i class="bi bi-info-circle fs-1 mb-3" style="color: var(--nav-icon-color);"></i>
+                            <p class="mb-0">No login history found.</p>
+                        </div>
+
+                        <!-- Table -->
+                        <div class="table-responsive d-none" id="loginHistoryTableWrapper">
+                            <table class="table align-middle table-hover mb-0">
+                                <thead style="position: sticky; top: 0; background-color: var(--secondary); color: var(--dark); z-index: 1;">
+                                    <tr>
+                                        <th scope="col">
+                                            <i class="bi bi-calendar-event me-1"></i>Date & Time
+                                        </th>
+                                        <th scope="col">
+                                            <i class="bi bi-globe me-1"></i>IP Address
+                                        </th>
+                                        <th scope="col">
+                                            <i class="bi bi-laptop me-1"></i>Device
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="loginHistoryTableBody" style="color: var(--bs-body-color);">
+                                    <!-- Filled by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-0 pt-0 pb-3 px-4">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+/* 
+    Updated on : Jul 1, 2025
+    Author     : Ralph Gervacio
+    Description: Themed breadcrumbs for Acadalyze (Bootstrap 5 compatible)
+*/
+
+/* Breadcrumb Link Style (Always White) */
+.breadcrumb-item > a {
+    color: #ffffff !important;
+}
+
+/* Active Item (Always White, Semi-Bold & Italic) */
+.breadcrumb-item.active {
+    color: #ffffff !important;
+    font-weight: 600;     
+    font-style: italic;  
+}
+
+/* Breadcrumb Separator (Always White) */
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #ffffff !important;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>View Profile | Acadalyze</title>
+        <link href="/css/pages/profile/profile.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="bg-body-secondary text-body rounded shadow-sm p-4">
+
+                        <!-- Header -->
+                        <div class="text-start mb-4">
+                            <h3 class="fw-bold mb-2">User Profile</h3>
+                        </div>
+
+                        <!-- 📸 Cover and Profile Image Section -->
+                        <div class="profile-header-wrapper">
+                            <!-- Cover Image -->
+                            <img th:src="@{'/profile/cover-image/' + ${user.authUserId}}"
+                                 alt="Cover Photo"
+                                 class="cover-img w-100 border border-secondary shadow-sm"
+                                 onerror="this.onerror=null; this.src='/img/no-cover-photo.png';" />
+
+                            <!-- Profile Image -->
+                            <div class="profile-image-wrapper">
+                                <img th:src="@{'/profile/profile-image/' + ${user.authUserId}}"
+                                     alt="Profile Image"
+                                     class="profile-img border border-secondary shadow-sm bg-body"
+                                     onerror="this.onerror=null; this.src='/img/no-profile-picture.png';" />
+                            </div>
+                        </div>
+
+                        <!-- User Info -->
+                        <div class="text-center text-md-start mt-4">
+                            <h3 class="fw-bold mb-3" th:text="${user.firstName} + ' ' + ${user.lastName} + ' (@' + ${user.userName} + ')'"></h3>
+                            <p th:if="${user.bio != null}" class="text-muted" th:text="${user.bio}"></p>
+                        </div>
+
+                        <div class="row g-3 mt-4">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Full Name</p>
+                                    <h6 class="text-body" th:text="${user.firstName} + ' ' + ${user.middleName} + ' ' + ${user.lastName}"></h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Username</p>
+                                    <h6 class="text-body" th:text="${user.userName}"></h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Email</p>
+                                    <h6 class="text-body" th:text="${user.email}"></h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Student ID</p>
+                                    <h6 class="text-body">
+                                        <span th:if="${user.role.authRoleId == 3}" th:text="${user.studentId}"></span>
+                                        <span th:unless="${user.role.authRoleId == 3}">N/A</span>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Role</p>
+                                    <h6 class="text-body" th:text="${user.role.roleName.toUpperCase()}"></h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Account Status</p>
+                                    <h6 class="text-body">
+                                        <span th:if="${user.isVerified}" class="text-success">Verified</span>
+                                        <span th:unless="${user.isVerified}" class="text-warning">Not Verified</span>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Joined</p>
+                                    <h6 class="text-body" th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy hh:mm a')}"></h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-body-tertiary rounded p-3 h-100">
+                                    <p class="mb-1 text-secondary fw-bold">Created By</p>
+                                    <h6 class="text-body" th:text="${user.createdBy} ?: 'N/A'"></h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

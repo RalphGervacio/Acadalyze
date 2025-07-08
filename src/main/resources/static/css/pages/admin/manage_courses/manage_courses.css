@@ -1,0 +1,30 @@
+/* 
+    Created on : Jun 28, 2025, 11:52:42 PM
+    Author     : synta
+*/
+
+/* Action Buttons */
+.btn-edit {
+    background-color: #535353;
+    color: white;
+    border: none;
+}
+.btn-edit:hover {
+    opacity: 0.85;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+.btn-delete:hover {
+    opacity: 0.85;
+}
+
+/* Button inside header */
+#refreshCoursesBtn {
+    background-color: var(--light) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}

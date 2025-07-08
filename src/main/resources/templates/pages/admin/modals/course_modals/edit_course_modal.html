@@ -1,0 +1,41 @@
+<div th:fragment="courseEditModal">
+    <div class="modal fade" id="courseEditModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Course</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editCourseForm">
+                        <input type="hidden" id="editCourseId" name="courseId" />
+
+                        <div class="mb-3">
+                            <label for="editCourseCode" class="form-label">Course Code</label>
+                            <input type="text" class="form-control" id="editCourseCode" name="courseCode" placeholder="Course Code">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editCourseTitle" class="form-label">Course Title</label>
+                            <input type="text" class="form-control" id="editCourseTitle" name="courseTitle" placeholder="Course Title">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editCourseDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="editCourseDescription" name="courseDescription" rows="3" placeholder="Description"></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save me-1"></i>Update Course
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

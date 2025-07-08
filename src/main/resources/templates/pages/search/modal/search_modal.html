@@ -1,0 +1,36 @@
+<div th:fragment="mobileSearchModal">
+    <div class="modal fade" id="mobileSearchModal" tabindex="-1" aria-labelledby="mobileSearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content bg-body text-body">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="mobileSearchModalLabel">Search</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <form id="mobileSearchForm" onsubmit="return false;">
+                        <div class="input-group mb-3 position-relative">
+                            <input type="text" id="mobileSearchInput" class="form-control bg-body text-body border pe-5" placeholder="Search..." autocomplete="off">
+
+                            <!-- Clear button (mobile) -->
+                            <button type="button" id="clearMobileSearch" class="position-absolute end-0 top-50 translate-middle-y me-5 d-none bg-transparent p-0" style="border: none; z-index: 5;">
+                                <i class="bi bi-x"></i>
+                            </button>
+
+                            <!-- Search button -->
+                            <button class="btn btn-primary" type="submit" style="z-index: 1;">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Results -->
+                    <div id="mobileSearchResultsDropdown"
+                         class="p-2 border rounded bg-body"
+                         style="display: none; max-height: 350px; overflow-y: auto;">
+                        <!-- Results injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main_layout.html}">
+
+    <head>
+        <title>Profile | Acadalyze</title>
+        <link href="/css/pages/profile/profile.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div class="container-fluid pt-4 px-4" layout:fragment="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="bg-body-secondary text-body rounded shadow-sm p-4">
+
+                        <!-- Header -->
+                        <div class="text-start mb-4">
+                            <h3 class="fw-bold mb-2">Profile Settings</h3>
+                        </div>
+
+                        <!-- Nav Tabs -->
+                        <ul class="nav nav-tabs mb-4" id="profileTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="user-tab" data-bs-toggle="tab" data-bs-target="#userInfo"
+                                        type="button" role="tab" aria-controls="userInfo" aria-selected="true">User Information</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#changeImage"
+                                        type="button" role="tab" aria-controls="changeImage" aria-selected="false">Change Images</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#securitySettings"
+                                        type="button" role="tab" aria-controls="securitySettings" aria-selected="false">Security Settings</button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="profileTabContent">
+
+                            <!-- Tab 1: User Information -->
+                            <div class="tab-pane fade show active" id="userInfo" role="tabpanel" aria-labelledby="user-tab">
+
+                                <!-- 📸 Cover and Profile Image Section -->
+                                <div class="profile-header-wrapper">
+
+                                    <!-- Cover Image -->
+                                    <img id="coverPreview"
+                                         th:src="@{'/profile/cover-image/' + ${session.user.authUserId}}"
+                                         alt="Cover Photo"
+                                         class="cover-img w-100 border border-secondary shadow-sm"
+                                         onerror="this.onerror=null; this.src='/img/no-cover-photo.png';" />
+
+                                    <!-- Profile Image -->
+                                    <div class="profile-image-wrapper">
+                                        <img id="userInfoProfileImage"
+                                             th:src="@{'/profile/profile-image/' + ${session.user.authUserId}}"
+                                             alt="Profile Image"
+                                             class="profile-img border border-secondary shadow-sm bg-body"
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#imagePreviewModal"
+                                             onerror="this.onerror=null; this.src='/img/no-profile-picture.png';" />
+                                    </div>
+                                </div>
+
+                                <div class="text-start mb-4">
+                                    <!-- Push content to avoid overlapping -->
+                                    <div class="text-center text-md-start">
+                                        <h3 class="fw-bold mb-3">
+                                            <span th:text="${session.user.firstName} + ' ' + ${session.user.lastName} + ' (@' + ${session.user.userName} + ')'"></span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="card shadow-sm border-0">
+                                        <div class="card-body p-3">
+                                            <label for="userBio" class="form-label fw-semibold">Your Bio</label>
+                                            <textarea id="userBio" class="form-control rounded-3 border-0 bg-light-subtle p-3"
+                                                      rows="3"
+                                                      placeholder="Enter your bio here... (max 500 characters)..."
+                                                      style="resize: none; font-size: 0.95rem; line-height: 1.5;"></textarea>
+
+                                            <div id="bioActionButtons" class="text-end mt-3 d-none">
+                                                <button id="cancelBioBtn" class="btn btn-secondary me-2 px-4">
+                                                    <i class="bi bi-x-circle me-1"></i>Cancel
+                                                </button>
+                                                <button id="saveBioBtn" class="btn btn-theme-primary px-4">
+                                                    <i class="bi bi-save me-1"></i>Save Bio
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Full Name</p>
+                                            <h6 class="text-body" th:text="${session.user.firstName} + ' ' + ${session.user.middleName} + ' ' + ${session.user.lastName}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Username</p>
+                                            <h6 class="text-body" th:text="${session.user.userName}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Email</p>
+                                            <h6 class="text-body" th:text="${session.user.email}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Student ID</p>
+                                            <h6 class="text-body">
+                                                <span th:if="${session.user.role.authRoleId == 3}" th:text="${session.user.studentId}"></span>
+                                                <span th:unless="${session.user.role.authRoleId == 3}">N/A (Not a student)</span>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Role</p>
+                                            <h6 class="text-body" th:text="${session.user.role.roleName.toUpperCase()}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Account Status</p>
+                                            <h6 class="text-body">
+                                                <span th:if="${session.user.isVerified}" class="text-success">Verified</span>
+                                                <span th:unless="${session.user.isVerified}" class="text-warning">Not Verified</span>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Joined</p>
+                                            <h6 class="text-body" th:text="${#dates.format(session.user.createdAt, 'MMMM dd, yyyy hh:mm a')}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="bg-body-tertiary rounded p-3 h-100">
+                                            <p class="mb-1 text-secondary fw-bold">Created By</p>
+                                            <h6 class="text-body" th:text="${session.user.createdBy} ?: 'N/A'"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 2: Change Profile Image -->
+                            <div class="tab-pane fade" id="changeImage" role="tabpanel" aria-labelledby="image-tab">
+                                <h5 class="fw-bold text-body text-center mb-4">
+                                    <i class="bi bi-images me-2 text-primary"></i>Update Profile & Cover Photo
+                                </h5>
+
+                                <!-- Preview Section -->
+                                <div class="row g-4 align-items-start mb-5">
+                                    <!-- Cover Photo -->
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold text-body">Current Cover Photo</label>
+                                        <div class="position-relative rounded border border-secondary shadow-sm overflow-hidden">
+                                            <img id="coverPreview"
+                                                 th:src="@{'/profile/cover-image/' + ${session.user.authUserId}}"
+                                                 alt="Cover Photo"
+                                                 class="w-100"
+                                                 style="height: 200px; object-fit: cover; cursor: zoom-in;"
+                                                 onerror="this.onerror=null; this.src='/img/no-cover-photo.png';" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Profile Photo -->
+                                    <div class="col-md-6 text-center">
+                                        <label class="form-label fw-semibold text-body d-block mb-2">Current Profile Photo</label>
+                                        <div class="position-relative d-inline-block rounded-circle border border-secondary shadow-sm overflow-hidden" style="width: 200px; height: 200px;">
+                                            <img id="profilePreview"
+                                                 th:src="@{'/profile/profile-image/' + ${session.user.authUserId}}"
+                                                 alt="Profile Image"
+                                                 class="w-100 h-100"
+                                                 style="object-fit: cover; cursor: zoom-in;"
+                                                 onerror="this.onerror=null; this.src='/img/no-profile-picture.png';" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Upload Forms -->
+                                <div class="row g-4">
+                                    <!-- Cover Photo Upload -->
+                                    <div class="col-md-6">
+                                        <form id="uploadCoverForm" enctype="multipart/form-data"
+                                              class="p-4 rounded border border-secondary shadow-sm bg-body h-100">
+                                            <h6 class="fw-semibold mb-3 text-body">
+                                                <i class="bi bi-image-fill me-1 text-primary"></i>Upload New Cover Photo
+                                            </h6>
+                                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                                <input type="file" class="form-control text-body border border-secondary"
+                                                       name="coverImage" id="coverImage" accept="image/*" style="max-width: 70%;">
+                                                <button type="submit" class="btn shadow-sm upload-btn" id="uploadCoverButton">
+                                                    <span class="btn-content">
+                                                        <i class="bi bi-upload me-1 upload-icon"></i>Upload Cover
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <small id="coverFileSizeError" class="text-danger d-block mt-2"></small>
+                                        </form>
+                                    </div>
+
+                                    <!-- Profile Photo Upload -->
+                                    <div class="col-md-6">
+                                        <form id="uploadForm" enctype="multipart/form-data"
+                                              class="p-4 rounded border border-secondary shadow-sm bg-body h-100">
+                                            <h6 class="fw-semibold mb-3 text-body">
+                                                <i class="bi bi-person-circle me-1 text-primary"></i>Upload New Profile Photo
+                                            </h6>
+                                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                                <input type="file" class="form-control text-body border border-secondary"
+                                                       name="image" id="profileImage" accept="image/*" style="max-width: 70%;">
+                                                <button type="submit" class="btn shadow-sm upload-btn" id="uploadButton">
+                                                    <span class="btn-content">
+                                                        <i class="bi bi-upload me-1 upload-icon"></i>Upload
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <small id="fileSizeError" class="text-danger d-block mt-2"></small>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 3: Security Settings -->
+                            <div class="tab-pane fade" id="securitySettings" role="tabpanel" aria-labelledby="security-tab">
+                                <div class="mt-4 px-1 px-md-2">
+                                    <h5 class="fw-semibold text-body mb-1">
+                                        <i class="bi bi-shield-lock me-2 text-primary"></i>Security Settings
+                                    </h5>
+                                    <p class="text-body-secondary mb-3">Manage your account's security preferences and login options.</p>
+
+                                    <div class="list-group shadow-sm rounded-3 overflow-hidden">
+                                        <!-- Change Password -->
+                                        <div class="list-group-item bg-body text-body d-flex justify-content-between align-items-center py-3">
+                                            <div><i class="bi bi-key me-2 text-primary"></i>Change Password</div>
+                                            <a href="/change-password" class="btn btn-outline-primary btn-sm rounded-pill">Update</a>
+                                        </div>
+
+                                        <!-- Email Notifications Toggle -->
+                                        <div class="list-group-item bg-body text-body d-flex justify-content-between align-items-center py-3">
+                                            <div><i class="bi bi-envelope-open me-2 text-primary"></i>Email Notifications</div>
+                                            <div class="form-check form-switch m-0">
+                                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                            </div>
+                                        </div>
+
+                                        <!-- Logout All Devices -->
+                                        <div class="list-group-item bg-body text-body d-flex justify-content-between align-items-center py-3">
+                                            <div><i class="bi bi-box-arrow-right me-2 text-primary"></i>Logout from All Devices</div>
+                                            <button class="btn btn-outline-danger btn-sm rounded-pill">Logout All</button>
+                                        </div>
+
+                                        <!-- Login History -->
+                                        <div class="list-group-item bg-body text-body d-flex justify-content-between align-items-center py-3">
+                                            <div><i class="bi bi-clock-history me-2 text-primary"></i>Login History</div>
+                                            <button class="btn btn-outline-secondary btn-sm rounded-pill" onclick="confirmPasswordBeforeHistory()">View</button>
+                                        </div>
+
+                                        <!-- Two-Factor Authentication -->
+                                        <div class="list-group-item bg-body text-body d-flex justify-content-between align-items-center py-3">
+                                            <div><i class="bi bi-shield-check me-2 text-primary"></i>Two-Factor Authentication</div>
+                                            <span class="badge bg-secondary text-light rounded-pill px-3">Coming Soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- End of tab-content -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Include modal fragment -->
+            <div th:insert="~{pages/profile/modal/image_preview :: imagePreviewModal}"></div>
+            <div th:insert="~{pages/profile/modal/password_confirmation :: passwordConfirmModal}"></div>
+            <div th:insert="~{pages/profile/modal/login_history :: loginHistoryModal}"></div>
+
+        </div>
+
+        <!-- Scripts -->
+        <div layout:fragment="page-scripts">
+            <script src="/lib/swal2/js/sweetalert2@11.js"></script>
+            <script src="/js/profile/login_history.js"></script>
+            <script src="/js/profile/myprofile.js"></script>
+        </div>
+
+    </body>
+</html>

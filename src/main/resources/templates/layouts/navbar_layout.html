@@ -1,0 +1,177 @@
+<div th:fragment="NavMainFooter">
+    <!-- Navbar Start -->
+    <div class="content">
+        <nav class="navbar navbar-expand sticky-top px-4 py-0">
+            <a th:href="@{/Dashboard}" class="navbar-brand d-flex justify-content-center d-lg-none align-items-center my-0 py-0 px-0 mx-0">
+                <span class="text-center acadalyze-logo-navbar">
+                    Acadalyze
+                </span>
+            </a>
+            <a href="#" class="sidebar-toggler flex-shrink-0">
+                <i class="fa fa-bars"></i>
+            </a>
+
+            <!-- SEARCH CONTAINER -->
+            <div class="d-flex align-items-center position-relative flex-grow-1 px-3" id="searchContainer">
+                <!-- TOGGLE BUTTON (VISIBLE ON MOBILE) -->
+                <button id="searchToggleBtn" class="btn d-md-none me-2" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+
+                <!-- SEARCH FORM -->
+                <div class="container-fluid">
+                    <div class="row w-100">
+                        <div class="col-12 col-md-8 col-lg-6">
+                            <form id="searchForm" class="w-100 d-none d-md-flex" onsubmit="return false;">
+                                <div class="input-group flex-nowrap position-relative w-100">
+                                    <input type="text"
+                                           id="searchInput"
+                                           class="form-control text-body border shadow-sm"
+                                           placeholder="Search students, subjects, grades..."
+                                           autocomplete="off"
+                                           aria-label="Search" />
+
+                                    <button type="button" id="clearSearch"
+                                            class="position-absolute end-0 top-50 translate-middle-y me-5 d-none bg-transparent p-0"
+                                            style="border: none; z-index: 5;">
+                                        <i class="bi bi-x"></i>
+                                    </button>
+
+                                    <button class="btn" type="submit"
+                                            style="background: var(--icon-bg); color: var(--nav-icon-color); z-index: 4;">
+                                        <span id="searchIcon"><i class="bi bi-search"></i></span>
+                                        <span id="spinnerIcon" class="spinner-border spinner-border-sm d-none"></span>
+                                    </button>
+
+                                    <div id="searchResultsDropdown"
+                                         class="dropdown-menu shadow mt-5 p-2"
+                                         style="display: none; max-height: 350px; overflow-y: auto;">
+                                        <!-- Results injected by JS -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-nav align-items-center ms-auto">
+
+                <!-- 📨 MESSAGES -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+                       id="messageDropdown"
+                       data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-envelope me-1 text-body"></i>
+                        <span class="d-none d-lg-inline-flex">Messages</span>
+                        <span id="messageBadge" class="badge bg-danger rounded-pill ms-1 d-none"></span>
+                    </a>
+
+                    <div class="dropdown-menu message-dropdown-menu mt-2"
+                         aria-labelledby="messageDropdown" id="messageMenu">
+
+                        <!-- Header -->
+                        <div class="px-3 py-2 border-bottom text-light fw-semibold small"
+                             style="background-color: var(--primary);">
+                            Unread Messages
+                        </div>
+
+                        <!-- Message List -->
+                        <div id="messageList" class="py-2 px-2">
+                            <p class="dropdown-item text-center text-muted mb-0">No unread messages</p>
+                        </div>
+
+                        <!-- Footer -->
+                        <hr class="dropdown-divider m-0">
+                        <a th:href="@{/messages}" class="dropdown-item text-center text-primary fw-medium py-2">
+                            See All Messages
+                        </a>
+                    </div>
+                </div>
+
+                <!--NOTIFICATION-->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+                       id="notificationDropdown"
+                       data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-bell me-1 text-body"></i>
+                        <span class="d-none d-lg-inline-flex">Notifications</span>
+                        <span id="notificationBadge" class="badge bg-danger rounded-pill ms-1 d-none"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3 w-100 w-sm-75 w-md-50 w-lg-25"
+                         style="background-color: var(--secondary); min-width: 320px; max-width: 500px;"
+                         aria-labelledby="notificationDropdown" id="notificationMenu">
+
+                        <!-- Header -->
+                        <div class="px-3 py-2 border-bottom text-light fw-semibold small" style="background-color: var(--primary);">
+                            Recent Notifications
+                        </div>
+
+                        <!-- Notification List -->
+                        <div id="notificationList" class="py-2 px-2" style="max-height: 300px; overflow-y: auto;">
+                            <p class="dropdown-item text-center text-muted mb-0">No notifications found</p>
+                        </div>
+
+                        <!-- Footer -->
+                        <hr class="dropdown-divider m-0">
+                        <a th:href="@{/notifications}" class="dropdown-item text-center text-primary fw-medium py-2">
+                            See All Notifications
+                        </a>
+                    </div>
+                </div>
+
+                <!-- When user is logged in -->
+                <div class="nav-item dropdown" th:if="${session.user != null}">
+                    <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                        <!-- User Name -->
+                        <span class="d-none d-lg-inline-flex" th:text="${session.user.firstName + ' ' + session.user.lastName}"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+
+                        <!-- 🌗 Theme Toggle Switch -->
+                        <div class="dropdown-item px-3 py-2" style="cursor: default;">
+                            <div id="themeToggleBtn" class="mx-1 d-flex align-items-center justify-content-between w-100">
+                                <div id="themeSlider" class="theme-slider">
+                                    <div class="sun"></div>
+                                    <div class="moon"></div>
+                                </div>
+                                <span class="theme-switch-label">Toggle Theme</span>
+                            </div>
+                        </div>
+
+                        <a th:href="@{/profile}" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-person-circle me-2"></i> My Profile
+                        </a>
+                        <a th:href="@{/profile} + '#securitySettings'" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </a>
+                        <a th:href="@{/auth/logout}" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- When user is logged out -->
+                <div class="nav-item ms-2" th:if="${session.user == null}">
+                    <a th:href="@{/auth/login}" class="btn btn-outline-light futuristic-hover">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar End -->
+
+        <!-- Content Start -->
+        <main class="container flex-grow-5" layout:fragment="content">
+            <!--DYNAMICALLY DISPLAY THE CONTENTS-->
+        </main>
+
+        <!-- Dynamically Display Footer -->
+        <div th:insert="~{layouts/footer_layout :: footer}"></div>
+
+    </div>
+</div>

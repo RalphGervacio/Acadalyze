@@ -1,0 +1,12 @@
+/* 
+    Created on : Jun 30, 2025, 5:54:19 PM
+    Author     : Ralph Gervacio
+*/
+
+/* Button inside header */
+#refreshInstructorsBtn {
+    background-color: var(--light) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}
+

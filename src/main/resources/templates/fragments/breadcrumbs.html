@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--MANAGEMENT BREADCRUMBS-->
+    <th:block th:fragment="manageUsers">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/users}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-people-fill me-1"></i> Manage Users
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageInstructors">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/instructors}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-person-badge-fill me-1"></i> Manage Instructors
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageSubjects">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/subjects}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-book-fill me-1"></i> Manage Subjects
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageCourses">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/courses}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-layers-fill me-1"></i> Manage Courses
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageEnrollments">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/enrollments}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-person-plus-fill me-1"></i> Manage Enrollments
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageSchedules">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/schedules}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-calendar-week-fill me-1"></i> Manage Schedules
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+
+    <th:block th:fragment="manageCurriculum">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a th:href="@{/admin/course-subjects}" class="text-decoration-none">
+                        <i class="bi bi-gear-fill me-1"></i> Management
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="bi bi-journal-bookmark-fill me-1"></i> Manage Curriculum
+                </li>
+            </ol>
+        </nav>
+    </th:block>
+    <!--MANAGEMENT BREADCRUMBS-->
+
+</html>

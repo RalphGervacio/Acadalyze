@@ -1,0 +1,36 @@
+/* 
+    Created on : Jun 29, 2025, 1:12:49 AM
+    Author     : synta
+*/
+
+/* Action Buttons */
+.btn-edit {
+    background-color: #535353;
+    color: white;
+    border: none;
+}
+.btn-edit:hover {
+    opacity: 0.85;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+.btn-delete:hover {
+    opacity: 0.85;
+}
+
+#refreshEnrollmentsBtn {
+    background-color: var(--light) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}
+
+#clearFilterBtn{
+    background-color: var(--light) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}
+
