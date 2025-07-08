@@ -15,7 +15,8 @@ const onlineUsersSet = new Set();
 export { onlineUsersSet };
 
 function connectWebSocket() {
-    socket = new WebSocket(`ws://${location.host}/ws/chat`);
+    const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+    socket = new WebSocket(`${protocol}${location.host}/ws/chat`);
 
     socket.onopen = () => {
         console.log('🟢 WebSocket connected');
@@ -93,14 +94,14 @@ function connectWebSocket() {
                 updateUserStatusUI(msg.userId, true);
                 forceHeaderStatusRefresh(msg.userId);
                 break;
-                
+
             case 'USER_OFFLINE':
                 console.log('🔴 USER_OFFLINE:', msg.userId);
                 onlineUsersSet.delete(msg.userId);
                 updateUserStatusUI(msg.userId, false);
                 forceHeaderStatusRefresh(msg.userId);
                 break;
-                
+
             case 'ACTIVE_NOW':
                 break;
             case 'STATUS_CHANGE':
