@@ -1,33 +1,66 @@
-HELP.md
+# --------------------------------------
+# General Build Artifacts
+# --------------------------------------
 target/
+build/
+dist/
+*.class
+*.log
+*.tmp
+
+# --------------------------------------
+# Maven Wrapper
+# --------------------------------------
+.mvn/
 .mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# --------------------------------------
+# NetBeans
+# --------------------------------------
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
 
-### IntelliJ IDEA ###
-.idea
+# --------------------------------------
+# IntelliJ IDEA
+# --------------------------------------
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
+# --------------------------------------
+# Spring Tool Suite / Eclipse
+# --------------------------------------
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# --------------------------------------
+# Visual Studio Code
+# --------------------------------------
+.vscode/
+
+# --------------------------------------
+# System Files
+# --------------------------------------
+.DS_Store
+Thumbs.db
+
+# --------------------------------------
+# Optional Docs or Files You Don’t Need
+# --------------------------------------
+HELP.md
+
+# --------------------------------------
+# Explicit Allow List (optional)
+# --------------------------------------
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-### VS Code ###
-.vscode/
+!**/src/main/**/target/
+!**/src/test/**/target/
