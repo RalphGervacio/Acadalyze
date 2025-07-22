@@ -12,20 +12,6 @@ $(document).ready(function () {
     }
     initializeSpinner();
 
-    // Back to Top Button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-
-    $('.back-to-top').click(function (event) {
-        event.preventDefault();
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-    });
-
     // Sidebar Toggler
     $('.sidebar-toggler').click(function (event) {
         event.preventDefault();

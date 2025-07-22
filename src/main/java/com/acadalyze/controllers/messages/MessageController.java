@@ -69,6 +69,7 @@ public class MessageController {
 
         ModelAndView mav = new ModelAndView("pages/messages");
         mav.addObject("chatHeads", chatHeads);
+        mav.addObject("pageName", "messages");
 
         if (receiverId != null) {
             mav.addObject("conversation", messagesDAO.getConversation(currentUserId, receiverId));
